@@ -21,8 +21,8 @@ jobs:
 
       - name: Verify if php is running
         run: |
-          node_version=$(docker run --name ${IMAGE_NAME} ${IMAGE_NAME}:latest php -v)
-          if [[ $node_version != *"PHP"* ]]; then
+          php_version=$(docker run --name ${IMAGE_NAME} ${IMAGE_NAME}:latest php -v)
+          if [[ $php_version != *"PHP"* ]]; then
             exit 1
           fi
 
