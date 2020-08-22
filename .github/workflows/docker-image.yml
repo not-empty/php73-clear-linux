@@ -19,7 +19,7 @@ jobs:
       - name: Build image
         run: docker build --file Dockerfile --tag ${IMAGE_NAME} .
 
-      - name: Verify if node is running
+      - name: Verify if php is running
         run: |
           node_version=$(docker run --name ${IMAGE_NAME} ${IMAGE_NAME}:latest php -v)
           if [[ $node_version != *"PHP"* ]]; then
