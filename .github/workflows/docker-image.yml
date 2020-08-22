@@ -2,34 +2,49 @@ name: CI
 
 on:
   push:
-    branches:
-      - master
-
-    tags:
-      - v*
-
+    branches: [ master ]
   pull_request:
+    branches: [ master ]
 
 env:
   IMAGE_NAME: php73-clear-linux
 
 jobs:
-  push:
+  test:
     runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build image
+        run: docker build --file Dockerfile --tag ${IMAGE_NAME} .
+
+      - name: Verify if node is running
+        run: |
+          node_version=$(docker run --name ${IMAGE_NAME} ${IMAGE_NAME}:latest php -v)
+          if [[ $node_version != *"PHP"* ]]; then
+            exit 1
+          fi
+
+  push:
+    needs: test
+
+    runs-on: ubuntu-latest
+
     if: github.event_name == 'push'
 
     steps:
       - uses: actions/checkout@v2
 
       - name: Build image
-        run: docker build . --file Dockerfile --tag $IMAGE_NAME
+        run: docker build --file Dockerfile --tag ${IMAGE_NAME} .
 
-      - name: Log into registry
+      - name: Auth
         run: echo "${{ secrets.GH_TOKEN }}" | docker login docker.pkg.github.com -u ${{ secrets.GH_USER }}} --password-stdin
 
       - name: Push image
         run: |
-          IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$IMAGE_NAME
+          IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/${IMAGE_NAME}
 
-          docker tag $IMAGE_NAME $IMAGE_ID:latest
-          docker push $IMAGE_ID:latest
+          docker tag ${IMAGE_NAME} ${IMAGE_ID}:latest
+          docker push ${IMAGE_ID}:latest
