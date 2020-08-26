@@ -10,6 +10,8 @@ Docker image with PHP 7.3 using Clear Linux S.O
 
 Requires [Docker](https://www.docker.com/get-started).
 
+Before get the image is necessary [authenticate](https://docs.github.com/pt/packages/using-github-packages-with-your-projects-ecosystem/configuring-docker-for-use-with-github-packages) in Github Package
+
 You can run the container and service like so:
 
 ```sh
