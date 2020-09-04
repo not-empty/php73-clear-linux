@@ -4,8 +4,6 @@ ENV VERSION_ID 33620
 
 ARG swupd_args
 
-RUN swupd update --no-boot-update $swupd_args
-
 COPY --from=clearlinux/os-core:latest /usr/lib/os-release /
 
 RUN source /os-release
