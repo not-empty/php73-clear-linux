@@ -1,6 +1,6 @@
 FROM clearlinux:latest AS builder
 
-ENV VERSION_ID 33620
+ENV VERSION_ID 33680
 
 ARG swupd_args
 
