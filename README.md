@@ -32,6 +32,9 @@ services:
         volumes:
             - ./:/var/www/html
 ```
+### Get latest version
+
+To found and verify what is latest image look at [Clear Linux CDN](https://cdn.download.clearlinux.org/latest)
 
 ### Development
 
