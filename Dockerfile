@@ -2,8 +2,6 @@ FROM clearlinux/php-fpm:7.3.13 AS builder
 
 ENV VERSION_ID 31680
 
-ARG swupd_args
-
 COPY --from=clearlinux/os-core:latest /usr/lib/os-release /
 
 RUN source /os-release
