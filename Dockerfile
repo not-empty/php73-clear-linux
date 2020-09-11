@@ -1,6 +1,6 @@
-FROM clearlinux:latest AS builder
+FROM clearlinux/php-fpm:7.3.13 AS builder
 
-ENV VERSION_ID 33680
+ENV VERSION_ID 31680
 
 ARG swupd_args
 
