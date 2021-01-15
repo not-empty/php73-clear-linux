@@ -2,7 +2,7 @@
 
 [![Latest Version](https://img.shields.io/github/v/release/kiwfy/php73-clear-linux.svg?style=flat-square)](https://github.com/kiwfy/php73-clear-linux/releases)
 [![Build Status](https://img.shields.io/github/workflow/status/kiwfy/php73-clear-linux/CI?label=ci%20build&style=flat-square)](https://github.com/kiwfy/php73-clear-linux/actions?query=workflow%3ACI)
-![Code Size](https://img.shields.io/github/languages/code-size/kiwfy/php73-clear-linux?style=flat-square)
+![Docker Image Size](https://img.shields.io/docker/image-size/kiwfydev/php73-clear-linux/latest)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 Docker image with PHP 7.3 using Clear Linux S.O
@@ -17,6 +17,12 @@ You can run the container and service like so:
 
 ```sh
 docker run -d docker.pkg.github.com/kiwfy/php73-clear-linux/php73-clear-linux:latest
+```
+
+Or with [Docker Hub](https://hub.docker.com/r/kiwfydev/php73-clear-linux) image
+
+```sh
+docker run -d kiwfydev/php73-clear-linux:latest
 ```
 
 ### Docker with compose tool
